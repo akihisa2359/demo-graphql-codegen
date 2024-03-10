@@ -2,8 +2,14 @@ import { ApolloServer, gql } from "apollo-server";
 
 // スキーマ定義
 const typeDefs = gql`
+  type User {
+    id: Float
+    name: String
+  }
+
   type Query {
     hello: String
+    getUsers: [User]
   }
 `;
 
@@ -13,6 +19,12 @@ const resolvers = {
     hello: () => {
       console.log("query hello is called");
       return "Hello world!";
+    },
+    getUsers() {
+      return [
+        { id: 1, name: "Suzuki" },
+        { id: 2, name: "Tanaka" },
+      ];
     },
   },
 };
