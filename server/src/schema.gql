@@ -1,0 +1,15 @@
+type User {
+  id: Float
+  name: String
+}
+
+type Query {
+  hello: String
+  getUsers: [User]
+}
+
+query ALL_USERS {
+  getUsers {
+    name
+  }
+}

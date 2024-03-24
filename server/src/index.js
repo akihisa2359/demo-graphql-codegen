@@ -1,17 +1,8 @@
+import { readFileSync } from "fs";
+import { join } from "path";
 import { ApolloServer, gql } from "apollo-server";
 
-// スキーマ定義
-const typeDefs = gql`
-  type User {
-    id: Float
-    name: String
-  }
-
-  type Query {
-    hello: String
-    getUsers: [User]
-  }
-`;
+const typeDefs = readFileSync(join(process.cwd(), "src/schema.gql"), "utf-8");
 
 // リゾルバ定義
 const resolvers = {

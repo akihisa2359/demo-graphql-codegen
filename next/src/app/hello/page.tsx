@@ -1,25 +1,24 @@
 "use client";
 
-import { useQuery, gql } from "@apollo/client";
+import { useQuery } from "@apollo/client";
+import { gql } from "../../../apollo/__generated__/client";
 
-const HELLO = gql(`
-  query heloooo {
-    hello
-  }
-`);
+// const HELLO = gql(`
+//   query heloooo {
+//     hello
+//   }
+// `);
 
-const GETUSERS = gql(`
-  query getUsers {
-    getUsers {
-      id
-      name
-    }
+const ALL_USERS = gql(`query ALL_USERS {
+  getUsers {
+    name
   }
-`);
+}`);
 
 export default function Hoge() {
   // const { loading, error, data } = useQuery(HELLO);
-  const { loading, error, data } = useQuery(GETUSERS);
+  const { loading, error, data } = useQuery(ALL_USERS);
+  console.log(data?.getUsers?.[0]?.name);
   console.log(data);
   return (
     <>
